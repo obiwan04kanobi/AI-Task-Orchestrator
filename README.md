@@ -1,4 +1,4 @@
-# AI Orchestrator
+# AI Task Orchestrator
 
 AI Orchestrator is a Flask-based application that dynamically selects and runs Docker containers for different AI tasks (e.g., data cleaning, sentiment analysis) based on user input. It uses an LLM API to decide which container to execute.
 
@@ -12,13 +12,18 @@ AI Orchestrator is a Flask-based application that dynamically selects and runs D
 ## 🗂️ Project Structure
 
 ```
-AI_Orchestrator/
-├── app.py              # Flask Application
-├── Dockerfile_cleaner  # Dockerfile for Data Cleaner
-├── Dockerfile_sentiment# Dockerfile for Sentiment Analyzer
-├── requirements.txt    # Python Dependencies
+AI-Task-Orchestrator/
+├── Dockerfile
+├── app.py (Flask Orchestrator)
+├── services/
+│   ├── sentiment_analyzer/
+│   │     ├── Dockerfile
+│   │     └── analyzer.py
+│   └── data_cleaner/
+│         ├── Dockerfile
+│         └── cleaner.py
 └── templates/
-    └── index.html      # HTML Template
+      └── index.html
 ```
 
 ## 🛠️ Setup Instructions
@@ -27,7 +32,7 @@ AI_Orchestrator/
 
 ```bash
 git clone https://github.com/obiwan04kanobi/AI-Task-Orchestrator
-cd AI_Orchestrator
+cd AI-Task-Orchestrator
 ```
 
 2. **Set Up Environment:**
@@ -51,8 +56,8 @@ GROQ_API_KEY=your_api_key_here
 4. **Build Docker Images:**
 
 ```bash
-docker build -t data_cleaner -f Dockerfile_cleaner .
-docker build -t sentiment_analyzer -f Dockerfile_sentiment .
+docker build -t data_cleaner ./services/data_cleaner
+docker build -t sentiment_analyzer ./services/sentiment_analyzer
 ```
 
 5. **Run the Flask Application:**
@@ -76,7 +81,7 @@ Navigate to: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 ## 📽️ Demo Video
 
-[Demo Video](https://drive.google.com/file/d/1AcRoim5ldMaWE1enErS4Q9ZEb2NKB_y6/view?usp=sharing)
+[Demo Video Link 🔗](https://drive.google.com/file/d/1AcRoim5ldMaWE1enErS4Q9ZEb2NKB_y6/view?usp=sharing)
 
 ## 📦 Docker Containers
 
